@@ -10,7 +10,7 @@ export async function main(event, context) {
       companyName: data.companyName,
       companyCode: data.companyCode,
       address: data.address,
-      email: data.email
+      email: data.email,
       bankNum: data.bankNum,
       bankAccountNum: data.bankAccountNum,
       bankBranch: data.bankBranch,
