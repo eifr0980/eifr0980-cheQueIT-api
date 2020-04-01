@@ -9,7 +9,9 @@ export async function main(event, context) {
     Item: {
       userId: event.requestContext.identity.cognitoIdentityId,
       chequeId: v1(),
-      content: data.content,
+      chequeNum: data.chequeNum,
+      amount: data.amount,
+      date: data.date,
       attachment: data.attachment,
       createdAt: Date.now()
     }
