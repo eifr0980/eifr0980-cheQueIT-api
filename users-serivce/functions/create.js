@@ -1,4 +1,3 @@
-import { v1 } from "uuid";
 import * as dynamoDbLib from "../libs/dynamodb-lib";
 import { success, failure } from "../libs/response-lib";
 
@@ -8,9 +7,13 @@ export async function main(event, context) {
     TableName: process.env.tableName,
     Item: {
       userId: event.requestContext.identity.cognitoIdentityId,
-      chequeId: v1(),
-      content: data.content,
-      attachment: data.attachment,
+      companyName: data.companyName,
+      companyCode: data.companyCode,
+      address: data.address,
+      email: data.email
+      bankNum: data.bankNum,
+      bankAccountNum: data.bankAccountNum,
+      bankBranch: data.bankBranch,
       createdAt: Date.now()
     }
   };

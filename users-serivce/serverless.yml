@@ -41,11 +41,11 @@ provider:
       # Restrict our IAM role permissions to
       # the specific table for the stage
       Resource:
-        - "Fn::GetAtt": [ChqeuesTable, Arn]
+        - "Fn::GetAtt": [UsersTable, Arn]
 
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
-  # - path: url path is /cheques
+  # - path: url path is /users
   # - method: POST request
   # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
   #     domain api call
@@ -54,55 +54,55 @@ functions:
     handler: functions/create.main
     events:
       - http:
-        path: cheques
-        method: post
-        cors: true
-        authorizer: aws_iam
+          path: users
+          method: post
+          cors: true
+          authorizer: aws_iam
 
   get:
     # Defines an HTTP API endpoint that calls the main function in get.js
-    # - path: url path is /cheques/{id}
+    # - path: url path is /users/{id}
     # - method: GET request
     handler: functions/get.main
     events:
       - http:
-        path: cheques/{id}
-        method: get
-        cors: true
-        authorizer: aws_iam
+          path: users/{id}
+          method: get
+          cors: true
+          authorizer: aws_iam
   list:
     # Defines an HTTP API endpoint that calls the main function in list.js
-    # - path: url path is /cheques
+    # - path: url path is /users
     # - method: GET request
     handler: functions/list.main
     events:
       - http:
-        path: cheques
-        method: get
-        cors: true
-        authorizer: aws_iam
+          path: users
+          method: get
+          cors: true
+          authorizer: aws_iam
   update:
     # Defines an HTTP API endpoint that calls the main function in update.js
-    # - path: url path is /cheques/{id}
+    # - path: url path is /users/{id}
     # - method: PUT request
     handler: functions/update.main
     events:
       - http:
-          path: cheques/{id}
+          path: users/{id}
           method: put
           cors: true
           authorizer: aws_iam
   delete:
     # Defines an HTTP API endpoint that calls the main function in delete.js
-    # - path: url path is /cheques/{id}
+    # - path: url path is /users/{id}
     # - method: DELETE request
     handler: functions/delete.main
     events:
       - http:
-        path: cheques/{id}
-        method: delete
-        cors: true
-        authorizer: aws_iam
+          path: users/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam
   billing:
     # Defines an HTTP API endpoint that calls the main function in billing.js
     # - path: url path is /billing
@@ -110,10 +110,10 @@ functions:
     handler: functions/billing.main
     events:
       - http:
-        path: billing
-        method: post
-        cors: true
-        authorizer: aws_iam
+          path: billing
+          method: post
+          cors: true
+          authorizer: aws_iam
 # Create our resources with separate CloudFormation templates
 resources:
   # API Gateway Errors
@@ -123,5 +123,5 @@ resources:
   # S3
   - ${file(resources/s3-bucket.yml)}
   # Cognito
-  - ${file(resources/cognito-user-pool.yml)}
-  - ${file(resources/cognito-identity-pool.yml)}
+  # - ${file(resources/cognito-user-pool.yml)}
+  # - ${file(resources/cognito-identity-pool.yml)}

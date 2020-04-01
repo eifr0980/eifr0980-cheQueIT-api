@@ -1,8 +1,8 @@
 {
-    "body": "{\"content\":\"hello world\",\"attachment\":\"hello.jpg\"}",
-    "requestContext": {
-        "identity": {
-            "cognitoIdentityId": "USER-SUB-1234"
-        }
+  "body": "{\"companyName\":\"hello world\",\"companyCode\":\"323123123\",\"address\":\"Hello World\",\"email\":\"asd@asd.asd\",\"bankNum\":\"11\",\"bankAccountNum\":\"123123\",\"bankBranch\":\"121\"}",
+  "requestContext": {
+    "identity": {
+      "cognitoIdentityId": "USER-SUB-1234"
     }
+  }
 }
