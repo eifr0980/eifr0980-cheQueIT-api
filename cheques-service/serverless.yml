@@ -54,6 +54,21 @@ functions:
     handler: functions/create.main
     events:
       - http:
+          path: cheque
+          method: post
+          cors: true
+          authorizer: aws_iam
+
+  # Defines an HTTP API endpoint that calls the main function in create.js
+  # - path: url path is /cheques
+  # - method: POST request
+  # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
+  #     domain api call
+  # - authorizer: authenticate using the AWS IAM role
+  createBulk:
+    handler: functions/createBulk.main
+    events:
+      - http:
           path: cheques
           method: post
           cors: true
