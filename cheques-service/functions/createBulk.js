@@ -4,26 +4,29 @@ import { success, failure } from "../libs/response-lib";
 
 export async function main(event, context) {
   const data = JSON.parse(event.body);
+  let result = [];
+  try {
+    for (let cheque of data) {
+      const params = {
+        TableName: process.env.tableName,
+        Item: {
+          userId: event.requestContext.identity.cognitoIdentityId,
+          chequeId: v1(),
+          chequeNum: cheque.chequeNum,
+          amount: cheque.amount,
+          date: cheque.date,
+          attachment: cheque.attachment,
+          createdAt: Date.now()
+        }
+      };
 
-  for (let cheque of data) {
-    const params = {
-      TableName: process.env.tableName,
-      Item: {
-        userId: event.requestContext.identity.cognitoIdentityId,
-        chequeId: v1(),
-        chequeNum: cheque.chequeNum,
-        amount: cheque.amount,
-        date: cheque.date,
-        attachment: cheque.attachment,
-        createdAt: Date.now()
+      try {
+        await dynamoDbLib.call("put", params);
+        result.push(params.Item);
+      } catch (e) {
+        return failure({ status: false });
       }
-    };
-
-    try {
-      await dynamoDbLib.call("put", params);
-      return success(params.Item);
-    } catch (e) {
-      return failure({ status: false });
     }
-  }
+    return success(result);
+  } catch (e) {}
 }
