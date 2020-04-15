@@ -118,6 +118,28 @@ functions:
           method: delete
           cors: true
           authorizer: aws_iam
+  totalAmount:
+    # Defines an HTTP API endpoint that calls the main function in billing.js
+    # - path: url path is /billing
+    # - method: POST request
+    handler: functions/dashboard/totalAmount.main
+    events:
+      - http:
+          path: totalAmount
+          method: get
+          cors: true
+          authorizer: aws_iam
+  monthlyAmount:
+    # Defines an HTTP API endpoint that calls the main function in billing.js
+    # - path: url path is /billing
+    # - method: POST request
+    handler: functions/dashboard/monthlyAmount.main
+    events:
+      - http:
+          path: monthlyAmount
+          method: get
+          cors: true
+          authorizer: aws_iam
   billing:
     # Defines an HTTP API endpoint that calls the main function in billing.js
     # - path: url path is /billing
