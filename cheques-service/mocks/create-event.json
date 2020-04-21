@@ -1,5 +1,5 @@
 {
-  "body": "{\"chequeNum\":\"12345678\", \"amount\":\"300\", \"date\":\"1519211810362\", \"attachment\":\"hello.jpg\"}",
+  "body": "{\"chequeNum\":\"12345678\", \"amount\":300, \"date\":\"1519211810362\", \"attachment\":\"hello.jpg\"}",
   "requestContext": {
     "identity": {
       "cognitoIdentityId": "USER-SUB-1234"

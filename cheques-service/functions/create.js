@@ -12,12 +12,12 @@ export async function main(event, context) {
       chequeNum: data.chequeNum,
       amount: data.amount,
       date: data.date,
-      deposited: data.deposited,
+      deposited: data.deposited || false,
       category: data.category,
       frontScan: data.frontScan,
       backScan: data.backScan,
-      createdAt: Date.now()
-    }
+      createdAt: Date.now(),
+    },
   };
 
   try {
