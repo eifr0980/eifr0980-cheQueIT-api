@@ -1,6 +1,6 @@
 import * as dynamoDbLib from "../../libs/dynamodb-lib";
 import { success, failure } from "../../libs/response-lib";
-import { groupByMonth, countChequesPerMonth } from "./tools";
+import { groupByMonth, sumGroupedCheques } from "./tools";
 
 export async function main(event, context) {
   const date = new Date();
@@ -33,7 +33,7 @@ export async function main(event, context) {
     const result = await dynamoDbLib.call("query", params);
     // sortCheques(result.Items);
     // Return the matching list of items in response body
-    const ordered = countChequesPerMonth(groupByMonth(result.Items));
+    const ordered = sumGroupedCheques(groupByMonth(result.Items));
     console.log(ordered);
     return success(ordered);
   } catch (e) {

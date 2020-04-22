@@ -173,6 +173,28 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+  sumByMonth:
+    # Defines an HTTP API endpoint that calls the main function in countByMonth.js
+    # - path: url path is /sumByMonth
+    # - method: GET request
+    handler: functions/dashboard/sumByMonth.main
+    events:
+      - http:
+          path: sumByMonth
+          method: get
+          cors: true
+          authorizer: aws_iam
+  groupByCategory:
+    # Defines an HTTP API endpoint that calls the main function in groupByCategory.js
+    # - path: url path is /groupByCategory
+    # - method: GET request
+    handler: functions/dashboard/groupByCategory.main
+    events:
+      - http:
+          path: groupByCategory
+          method: get
+          cors: true
+          authorizer: aws_iam
   billing:
     # Defines an HTTP API endpoint that calls the main function in billing.js
     # - path: url path is /billing
