@@ -121,7 +121,7 @@ functions:
   totalAmount:
     # Defines an HTTP API endpoint that calls the main function in totalAmount.js
     # - path: url path is /totalAmount
-    # - method: POST request
+    # - method: GET request
     handler: functions/dashboard/totalAmount.main
     events:
       - http:
@@ -132,11 +132,44 @@ functions:
   monthlyAmount:
     # Defines an HTTP API endpoint that calls the main function in monthlyAmount.js
     # - path: url path is /monthlyAmount
-    # - method: POST request
+    # - method: GET request
     handler: functions/dashboard/monthlyAmount.main
     events:
       - http:
           path: monthlyAmount
+          method: get
+          cors: true
+          authorizer: aws_iam
+  countPostdated:
+    # Defines an HTTP API endpoint that calls the main function in countPostdated.js
+    # - path: url path is /countPostdated
+    # - method: GET request
+    handler: functions/dashboard/countPostdated.main
+    events:
+      - http:
+          path: countPostdated
+          method: get
+          cors: true
+          authorizer: aws_iam
+  numOfCheques:
+    # Defines an HTTP API endpoint that calls the main function in numOfCheques.js
+    # - path: url path is /numOfCheques
+    # - method: GET request
+    handler: functions/dashboard/numOfCheques.main
+    events:
+      - http:
+          path: numOfCheques
+          method: get
+          cors: true
+          authorizer: aws_iam
+  countByMonth:
+    # Defines an HTTP API endpoint that calls the main function in countByMonth.js
+    # - path: url path is /countByMonth
+    # - method: GET request
+    handler: functions/dashboard/countByMonth.main
+    events:
+      - http:
+          path: countByMonth
           method: get
           cors: true
           authorizer: aws_iam
